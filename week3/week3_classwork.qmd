@@ -1,0 +1,65 @@
+---
+title: "Week 3 classwork"
+format: html
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+library(esquisse)
+```
+
+## Group by and summarise
+
+```{r}
+
+```
+
+## Histogram
+
+```{r}
+ggplot(penguins)  + geom_histogram(bins = 10) + aes(x = bill_length_mm) + theme_bw()
+```
+
+## Bar Plot
+
+```{r}
+ggplot(penguins) + aes(x = species) + geom_bar()
+```
+
+## Bar plots, providing both axis
+
+```{r}
+penguins_grouped = group_by(penguins, species)
+penguins_summary = summarise(penguins_grouped, n_species = n())
+penguins_summary
+```
+
+```{r}
+ggplot(penguins_summary) + aes(x = species, y = n_species) + geom_bar(stat = "identity")
+```
+
+## Scatterplot, line plots
+
+```{r}
+ggplot(penguins) + aes(x = bill_length_mm, y = bill_depth_mm, color = species) + geom_point()
+
+
+ggplot(penguins) + aes(x = bill_length_mm, y = bill_depth_mm) + geom_point() + facet_wrap(~species)
+
+ggplot(penguins) + aes(x = bill_length_mm, y = bill_depth_mm, color = island) + geom_point() + facet_wrap(~species)
+```
+
+## Box Plot
+
+```{r}
+ggplot(penguins) + aes(x = species, y = bill_depth_mm) + geom_boxplot() + labs(x = "Species", y = "Bill Depth (mm)", title = "Figure 1")
+
+```
+
+## Esquisse...
+
+```{r}
+esquisser(penguins)
+```

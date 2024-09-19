@@ -1,0 +1,80 @@
+---
+title: "Optional: Exercise 4 continued"
+format: html
+editor: visual
+---
+
+To clear the environment, run the following code chunk below:
+
+```{r}
+rm(list = ls())
+```
+
+## Loading data in
+
+We load in a dataframe via the `read.csv()` function. This is a common function to use for loading in Common Separated Value spreadsheets. We specify the directory of the file relative to where our project is.
+
+The spreadsheet `"scda2022_oldest_1.csv"` is a simulation of clinical trials data based on CDISC standards. Here is [where the data came from.](https://github.com/insightsengineering/scda)
+
+```{r, warning=FALSE, message=FALSE}
+library(tidyverse)
+clinical_df = read.csv("scda2022_oldest_1.csv")
+```
+
+## What's in the dataframe?
+
+A first step of data analysis is to explore what's in the dataframe, briefly. Use `View()`, `dim()`, `colnames()` to get a sense of what is in the dataframe.
+
+```{r}
+
+```
+
+## What do the rows represent?
+
+Then, let's think about what each row represents in this dataframe: clearly it's about a patient. But is a patient recorded repeatedly, say, from multiple visits or measurements, or are these unique measurements? We can figure this out by asking whether the `SUBJID` column contains repeated patient IDs, or whether they are all unique.
+
+The `unique()` function is helpful here. It takes in a vector and returns another vector without only unique elements from the input.
+
+First, use the `length()` function on `SUBJID` column to see the number of patient subject IDs recorded.
+
+```{r}
+
+```
+
+Then, use `unique()` function on `SUBJID` column to get the unique patients in a vector. Then, use `length()` on the unique patients. How do they compare?
+
+```{r}
+
+```
+
+So, does each row represents an unique patient?
+
+## Summary statistics
+
+Conduct summary statistics analysis on columns `ARM` (Study Arm) `BMRKR1` (Outcome Biomarker 1) and `BMRKR2` (Outcome Biomarker 2), and another column or two of your choice.
+
+```{r}
+
+```
+
+## Outcome analysis
+
+We want to compare `BMRKR1` (Outcome Biomarker 1) between each of the three study arms, as well as `BMRKR2` (Outcome Biomarker 2).
+
+Filter `clinical_df` to each of the three study arm conditions. That is, use `filter()` on `clinical_df` so that it filters for rows that only has values of "A: Drug X". Do it again for "B: Placebo", and "C: Combination".
+
+```{r}
+
+```
+
+Optional: you could additionally select for only columns relevant for this analysis:
+
+```{r}
+
+```
+
+Then, compare the summary statistics of `BMRKR1` bewteen the three study arm conditions. Do the same for `BMRKR2`.
+
+```{r}
+
+```

@@ -1,0 +1,62 @@
+---
+title: "Exercise 1 continued"
+format: html
+editor: visual
+---
+
+> > Remember to save a new version with your name, such as `exercise1-laderas.Rmd` before you go further.
+
+## What is this expression?!
+
+As we start to look at new data types and data structures, we need to be more attentive to the functions and operations we use. Sometimes, we expect an operation or function to behave a certain way in terms of the inputs accepted and the outputs produced, but we get an unexpected result, or an error. Let's experiment around to see the all sort of things that can happen when we start experimenting.
+
+**The + operation**
+
+We are familiar with expressions such as this:
+
+```{r}
+1 + 1
+```
+
+What happens if you add a numeric and a logical? What happens if you add a numeric and character? Logical and numeric? Try all sorts of combinations.
+
+```{r}
+
+```
+
+Consider the following vectors:
+
+```{r}
+num_vec = c(1, 4, 5)
+num_vec_2 = c(-1, -4, 0)
+char_vec = c("hippos", "butterflies", "orcas")
+logical_vec = c(FALSE, FALSE, TRUE)
+```
+
+Try adding some of these vectors together. What happens?
+
+```{r}
+
+```
+
+**The `mean`** **function**
+
+The `mean` function takes in a numerical vector, and returns the average value. Try using it on `num_vec`, `num_vec_2`, `char_vec`, `logical_vec` and see what happens. What happens if you use it on a singular data type, such as numeric, logical, and character?
+
+```{r}
+
+```
+
+## Other review
+
+Create a numeric variable that is the sum of the second element of `num_vec` and third element of `num_vec_2`.
+
+```{r}
+
+```
+
+Take the last element of `num_vec` and double it.
+
+```{r}
+
+```

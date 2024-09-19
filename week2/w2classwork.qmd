@@ -1,0 +1,57 @@
+---
+title: "Week 2 classwork"
+format: html
+editor: visual
+---
+
+> > Remember to save a new version with your name, such as `w2classword-laderas.amd` before you go further.
+
+The code chunk below clears your environment if you want to reset your work in interactive mode.
+
+```{r}
+rm(list = ls())
+```
+
+## Vector
+
+```{r}
+staff = c("chris", "shasta", "jeff")
+chrNum = c(2, 3, 1)
+```
+
+```{r}
+
+```
+
+```{r}
+age = c(89, 70, 64, 90, 66, 71, 55, 60, 30, 16)
+```
+
+```{r}
+age
+index = age > 50
+ageover50 = age[index]
+
+ageover50[5]
+
+
+```
+
+## Dataframe: load in data
+
+```{r, warning=F, message=F}
+library(tidyverse)
+load(url("https://github.com/fhdsl/Intro_to_R/raw/main/classroom_data/CCLE.RData"))
+```
+
+```{r}
+head(metadata)
+```
+
+```{r}
+dim(metadata)
+```
+
+```{r}
+View(metadata)
+```

@@ -1,0 +1,90 @@
+---
+title: "Exercise 2 continued"
+format: html
+editor: visual
+---
+
+If you need to clear your environment and start from the beginning, this code chunk will do that:
+
+```{r}
+rm(list = ls())
+```
+
+## More subsetting practice
+
+Consider a vector like this:
+
+```{r}
+staff = c("chris", "amy", "anna", "scott")
+```
+
+Suppose we want to subset this vector to staff memebers that starts with "a". Here is a function that give you a logical indexing vector to do that:
+
+```{r}
+startsWith(staff, "a")
+```
+
+Use it to subset the vector and store it as the variable `staff_a`:
+
+```{r}
+
+```
+
+Alternatively, subset the vector explicitly and store it as the variable `staff_a_also` :
+
+```{r}
+
+```
+
+Let's see whether both methods gets us to the same result: how similar are `staff_a` and `staff_a_also`? First, we can see whether their lengths are the same:
+
+```{r}
+
+```
+
+Then, compare it via the `==` comparison operator:
+
+```{r}
+staff_a == staff_a_also
+```
+
+Lastly, we can check for complete identical data structure using the `identical()` function:
+
+```{r}
+identical(staff_a, staff_a_also)
+```
+
+To think on your own: what is the advantage of using `identical()` to confirm that two expressions are giving us the same result? What are some disadvantages in which methods such as `staff_a` `== staff_a_also` is preferred?
+
+## Subsetting with missing values
+
+Load in data:
+
+```{r}
+library(tidyverse)
+load(url("https://github.com/fhdsl/Intro_to_R/raw/main/classroom_data/CCLE.RData"))
+```
+
+Examine the `Age` column in the `metadata` dataframe. Besides numerics, you should also see missing data coded as `NA`.
+
+```{r}
+
+```
+
+Use the `is.na()` function on the `Age` column (a numeric vector). This creates a logical indexing vector whether an element has `NA` or not:
+
+```{r}
+
+```
+
+Subset the `Age` column so that it only contains `NA` values:
+
+```{r}
+
+```
+
+Subset the `Age` column so that it only contains numeric values. You will need to change any `TRUE` value in your logical indexing vector to `FALSE`, and change any `FALSE` to `TRUE`. You can do it by `!is.na()` :
+
+```{r}
+
+```

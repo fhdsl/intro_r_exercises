@@ -1,0 +1,30 @@
+---
+title: "Pipes"
+format: html
+editor: visual
+---
+
+```{r}
+rm(list = ls())
+```
+
+```{r, message=F, warning=F}
+library(tidyverse)
+load(url("https://github.com/fhdsl/S1_Intro_to_R/raw/main/classroom_data/CCLE.RData"))
+```
+
+```{r}
+metadata_selected = select(metadata, Sex, OncotreeSubtype)
+
+metadata_filtered = filter(metadata_selected, OncotreeSubtype == "Lung Adenocarcinoma")
+
+metadata_filtered2 = filter(metadata_selected, OncotreeSubtype == "Lung Adenocarcinoma" | OncotreeSubtype == "Acute Myeloid Leukemia")
+
+table(metadata_filtered$Sex)
+
+mean(metadata$Age, na.rm = TRUE)
+```
+
+```{r}
+
+```

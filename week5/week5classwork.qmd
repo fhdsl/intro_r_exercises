@@ -1,0 +1,26 @@
+---
+title: "W4 Classwork"
+format: html
+editor: visual
+---
+
+```{r}
+rm(list = ls())
+```
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+load(url("https://github.com/fhdsl/S1_Intro_to_R/raw/main/classroom_data/CCLE.RData"))
+```
+
+```{r}
+result = full_join(metadata, expression, by = "ModelID")
+
+result_inner = inner_join(metadata, expression, by = "ModelID")
+dim(metadata)
+dim(expression)
+dim(result_inner)
+```
+
+### 
