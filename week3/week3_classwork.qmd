@@ -10,34 +10,23 @@ library(palmerpenguins)
 library(esquisse)
 ```
 
-## Group by and summarise
-
-```{r}
-
-```
-
 ## Histogram
 
+What does the `bins` argument do? Try adjusting it.
+
 ```{r}
-ggplot(penguins)  + geom_histogram(bins = 10) + aes(x = bill_length_mm) + theme_bw()
+ggplot(penguins)  + 
+  geom_histogram(bins = 10) + 
+  aes(x = bill_length_mm) + 
+  theme_bw()
 ```
 
 ## Bar Plot
 
 ```{r}
-ggplot(penguins) + aes(x = species) + geom_bar()
-```
-
-## Bar plots, providing both axis
-
-```{r}
-penguins_grouped = group_by(penguins, species)
-penguins_summary = summarise(penguins_grouped, n_species = n())
-penguins_summary
-```
-
-```{r}
-ggplot(penguins_summary) + aes(x = species, y = n_species) + geom_bar(stat = "identity")
+ggplot(penguins) + 
+  aes(x = species) + 
+  geom_bar()
 ```
 
 ## Scatterplot, line plots
@@ -45,16 +34,23 @@ ggplot(penguins_summary) + aes(x = species, y = n_species) + geom_bar(stat = "id
 ```{r}
 ggplot(penguins) + aes(x = bill_length_mm, y = bill_depth_mm, color = species) + geom_point()
 
-
 ggplot(penguins) + aes(x = bill_length_mm, y = bill_depth_mm) + geom_point() + facet_wrap(~species)
 
 ggplot(penguins) + aes(x = bill_length_mm, y = bill_depth_mm, color = island) + geom_point() + facet_wrap(~species)
 ```
 
-## Box Plot
+## geom_line() and the group aesthetic
 
 ```{r}
-ggplot(penguins) + aes(x = species, y = bill_depth_mm) + geom_boxplot() + labs(x = "Species", y = "Bill Depth (mm)", title = "Figure 1")
+ggplot(penguins) + aes(x = bill_length_mm, y = bill_depth_mm, color = island, group=island) + geom_line()
+```
+
+## Box Plot
+
+Try playing around with the labels in the following plot, adding a observation such as "Penguins have deep bills".
+
+```{r}
+ggplot(penguins) + aes(x = species, y = bill_depth_mm, fill=species) + geom_boxplot() + labs(x = "Species", y = "Bill Depth (mm)", title = "Figure 1")
 
 ```
 

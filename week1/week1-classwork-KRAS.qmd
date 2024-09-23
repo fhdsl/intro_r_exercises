@@ -1,6 +1,13 @@
-# KRAS Analysis Demo
+---
+title: "KRAS Analysis Demo"
+format: html
+---
 
 > Remember to save a new version with your name, such as `KRAS-laderas.qmd` before you go further.
+
+## Try Rendering this First
+
+Try clicking on the `Render` button right above the exercise window. (You may have to allow pop-ups.) What was made? Where was it made?
 
 ## Motivation
 
@@ -38,10 +45,12 @@ knitr::kable(table(metadata$OncotreePrimaryDisease))
 
 ```{r}
 metadata_filtered = metadata %>% 
-  filter(OncotreePrimaryDisease == "Rhabdoid Cancer" | OncotreePrimaryDisease =="Colorectal Adenocarcinoma" | OncotreePrimaryDisease == "Pancreatic Adenocarcinoma")
+  filter(OncotreePrimaryDisease == "Rhabdoid Cancer" | 
+           OncotreePrimaryDisease =="Colorectal Adenocarcinoma" | 
+           OncotreePrimaryDisease == "Pancreatic Adenocarcinoma")
 
-analysis = full_join(metadata_filtered, expression, by = "ModelID")
-analysis = full_join(analysis, mutation, by = "ModelID") 
+metadata_expression = full_join(metadata_filtered, expression, by = "ModelID")
+analysis = full_join(metadata_expression, mutation, by = "ModelID") 
            
 ```
 

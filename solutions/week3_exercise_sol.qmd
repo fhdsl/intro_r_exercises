@@ -1,0 +1,128 @@
+---
+title: "Week 3 exercises"
+format: html
+---
+
+## Load the Data and the Libraries
+
+```{r}
+library(palmerpenguins)
+library(tidyverse)
+
+head(penguins)
+```
+
+## Make Your Own Visualization
+
+Pick 2 or 3 variables to plot from the `penguins` dataset and a geometry function. Make sure that you are mapping the right aesthetics to your variables. For example, `color` usually wants a discrete categorical variable such as `species`.
+
+```{r}
+library(palmerpenguins)
+ggplot(penguins) +
+  aes() +
+  geom_
+
+```
+
+Try adding any of the following customizations to your above plot. 
+
+- `ggtitle("Palmer penguins are beautiful")`
+- `theme_minimal()`
+- `theme(axis.text = element_text(angle = 90))`
+
+## Why isn't this working?
+
+This code isn't working like we expect it to work. What do we need to do to fix it?
+
+Hint: we need to map `species` to a different aesthetic. Take a look at `geom_bar()` and see if you can fix it.
+
+```{r}
+ggplot(penguins) +
+  aes(x = bill_depth_mm,
+      color = species) +
+  geom_bar()
+```
+Solution: we need to map `fill` instead of `color`:
+
+```{r}
+ggplot(penguins) +
+  aes(x = bill_depth_mm,
+      fill = species) +
+  geom_bar()
+```
+
+## Try a new geom
+
+Try out one of the following geoms:
+
+- `geom_hex()`
+- `geom_smooth()`
+- `geom_violin()`
+
+And try to map the penguins data in and make a plot. Pay attention to the data types and whether it makes sense to map.
+
+Facet your plot by either `species` or `island`. Are there any unexpected findings?
+
+```{r}
+ggplot(penguins) +
+  aes(y=bill_length_mm,
+      x=species,
+      fill=species) +
+  geom_violin() +
+  facet_wrap(~island)
+```
+
+
+## `geom_tile()` + `geom_text()` = heatmap
+
+Why is this heatmap missing boxes? Hint: look at penguin counts.
+
+Look at the `count()` function and see if there's an argument we can set to fill in the missing boxes.
+
+```{r}
+penguin_counts <- count(x=penguins, species, island)
+
+penguin_counts
+
+ggplot(penguin_counts) +
+  aes(x=species, y=island, fill=n) +
+  geom_tile() +
+  geom_text(aes(label=n), 
+            color="white")
+```
+
+Solution: we need to set the `.drop=FALSE` in the `count()` function:
+
+```{r}
+penguin_counts <- count(x=penguins, species, island, .drop = FALSE)
+
+penguin_counts
+
+ggplot(penguin_counts) +
+  aes(x=species, y=island, fill=n) +
+  geom_tile() +
+  geom_text(aes(label=n), 
+            color="white")
+```
+
+## `{visdat}` for getting an overview of the data
+
+One of my favorite first visualizations of a dataset is using the `{visdat}` package. Try adding `facet=species`. What does it do?
+
+```{r}
+library(visdat)
+vis_dat(penguins)
+```
+
+Try out the `vis_miss()` function. What does it do?
+
+```{r}
+vis_miss(penguins)
+```
+
+## Try out `ggplot()` with other data!
+
+```{r}
+
+
+```

@@ -1,7 +1,6 @@
 ---
 title: "Exercise 1 continued"
 format: html
-editor: visual
 ---
 
 > > Remember to save a new version with your name, such as `exercise1-laderas.Rmd` before you go further.
