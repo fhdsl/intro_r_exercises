@@ -1,5 +1,5 @@
 ---
-title: "Exercise 1 continued"
+title: "Exercise 1 continued (Optional)"
 format: html
 ---
 

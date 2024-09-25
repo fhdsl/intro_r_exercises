@@ -1,7 +1,6 @@
 ---
 title: "Optional: Exercise 4 continued"
 format: html
-editor: visual
 ---
 
 To clear the environment, run the following code chunk below:
@@ -20,6 +19,20 @@ The spreadsheet `"scda2022_oldest_1.csv"` is a simulation of clinical trials dat
 library(tidyverse)
 clinical_df = read.csv("scda2022_oldest_1.csv")
 ```
+
+## Why we use projects
+
+If you look into the week4 project, you'll notice that there is a `data/` folder, which contains the data we want to analyze.
+
+Our Quarto documents live in the top directory (`week4/`), which means that when we want to access the data, we use the relative path:
+
+`data/scda2022_oldest_1.csv`
+
+Working in a prjoect has the nice advantage that you can zip up your code and data into single zip file and send it to your collaborators.
+
+In many cases, you may have a huge dataset (such as scRNA data) that gets summarized into a smaller number file. These are the kind of data files that you want to put into your project, not necessarily the raw data.
+
+Oftentimes, your data source is an external database you connect to, so that's an exception to storing your data in a project.
 
 ## What's in the dataframe?
 

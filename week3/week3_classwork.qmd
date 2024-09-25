@@ -12,12 +12,12 @@ library(esquisse)
 
 ## Histogram
 
-What does the `bins` argument do? Try adjusting it.
+What does the `bins` argument do? Try adjusting it and see what happens.
 
 ```{r}
 ggplot(penguins)  + 
-  geom_histogram(bins = 10) + 
   aes(x = bill_length_mm) + 
+  geom_histogram(bins = 10) + 
   theme_bw()
 ```
 
@@ -29,14 +29,68 @@ ggplot(penguins) +
   geom_bar()
 ```
 
-## Scatterplot, line plots
+```{r}
+ggplot(penguins) + 
+  aes(x = species,
+      fill = island) + 
+  geom_bar()
+```
 
 ```{r}
-ggplot(penguins) + aes(x = bill_length_mm, y = bill_depth_mm, color = species) + geom_point()
+ggplot(penguins) + 
+  aes(x = species,
+      fill = island) + 
+  geom_bar()
+```
 
-ggplot(penguins) + aes(x = bill_length_mm, y = bill_depth_mm) + geom_point() + facet_wrap(~species)
+### Looking at Proportions
 
-ggplot(penguins) + aes(x = bill_length_mm, y = bill_depth_mm, color = island) + geom_point() + facet_wrap(~species)
+```{r}
+ggplot(penguins) + 
+  aes(x = species,
+      fill = island) + 
+  geom_bar(position = "fill")
+```
+
+### Looking at separate bars
+
+```{r}
+ggplot(penguins) + 
+  aes(x = species,
+      fill = island) + 
+  geom_bar(position = "dodge")
+```
+
+## Scatterplot
+
+### Boring Scatterplot
+
+```{r}
+ggplot(penguins) + 
+  aes(x = bill_length_mm,
+      y = bill_depth_mm) + 
+  geom_point()
+```
+
+### Colorful Scatterplot
+
+```{r}
+ggplot(penguins) + 
+  aes(x = bill_length_mm, 
+      y = bill_depth_mm,
+      color = island) + 
+  geom_point() 
+```
+
+### Faceted scatterplot
+
+```{r}
+ggplot(penguins) + 
+  aes(x = bill_length_mm, 
+      y = bill_depth_mm, 
+      color = island) +
+  geom_point() + 
+  facet_wrap(~species)
 ```
 
 ## geom_line() and the group aesthetic
@@ -50,7 +104,17 @@ ggplot(penguins) + aes(x = bill_length_mm, y = bill_depth_mm, color = island, gr
 Try playing around with the labels in the following plot, adding a observation such as "Penguins have deep bills".
 
 ```{r}
-ggplot(penguins) + aes(x = species, y = bill_depth_mm, fill=species) + geom_boxplot() + labs(x = "Species", y = "Bill Depth (mm)", title = "Figure 1")
+ggplot(penguins) +
+  
+  aes(x = species, 
+      y = bill_depth_mm, 
+      fill=species) + 
+  
+  geom_boxplot() + 
+  
+  labs(x = "Species", 
+       y = "Bill Depth (mm)", 
+       title = "Figure 1")
 
 ```
 
@@ -59,3 +123,7 @@ ggplot(penguins) + aes(x = species, y = bill_depth_mm, fill=species) + geom_boxp
 ```{r}
 esquisser(penguins)
 ```
+
+## Another View of `ggplot2`
+
+Try out the first two chapters of the `R-Bootcamp` <https://r-bootcamp.netlify.app>

@@ -24,7 +24,7 @@ ggplot(penguins) +
 
 ```
 
-Try adding any of the following customizations to your above plot. 
+Try adding any of the following customizations to your above plot. What do they do?
 
 - `ggtitle("Palmer penguins are beautiful")`
 - `theme_minimal()`

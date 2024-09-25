@@ -4,7 +4,7 @@ format: html
 editor: visual
 ---
 
-> > Remember to save a new version with your name, such as `w2classword-laderas.amd` before you go further.
+> > Remember to save a new version with your name, such as `w2classwork-laderas.amd` before you go further.
 
 The code chunk below clears your environment if you want to reset your work in interactive mode.
 
@@ -15,7 +15,7 @@ rm(list = ls())
 ## Vector
 
 ```{r}
-staff = c("chris", "shasta", "jeff")
+staff = c("chris", "sana", "jeff")
 chrNum = c(2, 3, 1)
 ```
 
@@ -54,4 +54,9 @@ dim(metadata)
 
 ```{r}
 View(metadata)
+```
+
+```{r}
+library(visdat)
+vis_dat(metadata)
 ```
